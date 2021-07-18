@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="food">
+            <h4>Pick your items</h4>
+            <div v-for="(product, index) in products" 
+                :key="index" class="card"  
+                @click="product.active = !product.active" 
+                :class="{selected: product.active}">
+                <div class="card-img">
+                    <img :src="product.photo">
+                </div>
+                <div class="name">{{product.name}}</div>
+                
+                <div class="price">{{product.price}}$</div>
+                <div class="qty">
+                    <template v-if="product.active">
+                        <button @click.stop="decrease(index)" :disabled="product.quantity<=1">-</button>
+                        <span>{{product.quantity}}</span>
+                        <button @click.stop="increase(index)">+</button>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div id="invoice">
+            <h4>Order details</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="pr in products">
+                        <template v-if="pr.active">
+                            <td>{{pr.quantity + "x " + pr.name}}</td>
+                            <td>{{(pr.price * pr.quantity).toFixed(2)}}$</td>
+                        </template>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>{{total().toFixed(2)}}$</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

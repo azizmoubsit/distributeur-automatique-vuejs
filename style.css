@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .food {
+    min-width: 60%;
+    padding: 20px;
+    border: 1px solid #E6E6E6;
+    display: inline-block;
+    text-align: center;
+}
+
+.container .food h4 {
+    margin-bottom: 40px;
+}
+
+.container .food .card {
+    min-width: 30%;
+    padding: 10px;
+    border: 1px solid #E6E6E6;
+    display: inline-block;
+    text-align: center;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.container .food .card .card-img img{
+    width: 80px;
+}
+
+.container .food .card.selected {
+    border: 1px solid #00F;
+}
+
+.container .food .card * {
+    margin-top: 6px;
+}
+
+.container .food .card .qty {
+    margin: 8px;
+    height: 14px;
+}
+
+.container .food .card .qty * {
+    margin: 0 3px;
+}
+
+.container .food .card .qty button {
+    cursor: pointer;
+    width: 20px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 97, 202);
+}
+
+.container .food .card .qty button:disabled {
+    background-color: rgb(192, 192, 192);
+}
+
+.container #invoice {
+    width: 400px;
+    padding: 20px;
+    background: rgb(245, 245, 245);
+    height: auto !important;
+}
+
+.container #invoice h4 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.container #invoice table {
+    text-align: center;
+    width: 100%;
+    font-size: 11px;
+}
+
+.container #invoice table td {
+    padding: 5px 0;
+}
+
+.container #invoice table tfoot tr th {
+    border-top: 1px solid;
+    padding: 4px 0;
+}
